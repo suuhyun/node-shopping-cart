@@ -1,0 +1,33 @@
+<%- include('templates/header') %>
+
+<h1 class="pb-2 mt-4 mb-2 border-bottom"><%= p.title %></h1>
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <img class="spi" src="/product_images/<%= p.id %>/<%= p.image %>" alt="">
+        <br>
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <p><%= p.desc %></p>
+        <p>$<%= parseFloat(p.price).toFixed(2) %></p>
+        <% if (loggedIn) { %>
+        <p><a href="/cart/add/<%= p.slug %>">Add to cart</a></p>
+        <% } else { %>
+        <p>You must me logged in to purchase items.</p>
+        <% } %>
+    </div>
+    <div class="col-xs-12">
+        <ul class="gallery">
+            <% galleryImages.forEach(image => { %>
+                <% if (image != "thumbs") { %>
+                <li>
+                    <a data-fancybox="gallery" href="/product_images/<%= p.id %>/gallery/<%= image %>">
+                        <img src="/product_images/<%= p.id %>/gallery/thumbs/<%= image %>" alt="">
+                    </a>
+                </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<%- include('templates/footer') %>

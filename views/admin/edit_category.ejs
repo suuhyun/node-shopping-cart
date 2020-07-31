@@ -1,0 +1,15 @@
+<%- include('../templates/adminheader') %>
+
+<h2 class="page-title">Edit a category</h2>
+<a href="/admin/categories" class="btn btn-secondary">Back to all categories</a>
+<br><br>
+
+<form method="post" action="/admin/categories/edit-category/<%= id %>">
+    <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" class="form-control" name="title" value="<%= title %>" placeholder="Title">
+    </div>
+    <button class="btn btn-light">Submit</button>
+ 
+</form>
+<%- include('../templates/adminfooter') %>
